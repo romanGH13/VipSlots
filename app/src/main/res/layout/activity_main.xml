@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background"
+    android:paddingBottom="5dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    tools:context="com.example.roma.vipslots.MainActivity">
+
+    <LinearLayout
+        android:id="@+id/banner_layout"
+        android:layout_width="320dp"
+        android:layout_height="50dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    </LinearLayout>
+
+    <!--Left block-->
+    <LinearLayout
+        android:id="@+id/jackpot_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
+        app:layout_constraintEnd_toStartOf="@+id/game_layout"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/banner_layout">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@mipmap/text_jackpot" />
+
+        <TextView
+            android:id="@+id/field_jackpot"
+            style="@style/TextViewPrimary"
+            android:layout_gravity="center"
+            android:background="@mipmap/field_jackpot"
+            android:text="@string/label_jackpot"
+            android:textColor="@color/colorGold"
+            android:textSize="20sp" />
+
+        <!--<android.support.v7.widget.RecyclerView
+            android:id="@+id/jackpot_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:background="@drawable/border"
+            android:padding="10dp" />-->
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@mipmap/board_jackpot"/>
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@mipmap/logo"
+        app:layout_constraintTop_toBottomOf="@+id/banner_layout"
+        app:layout_constraintStart_toStartOf="@+id/game_layout"
+        app:layout_constraintEnd_toEndOf="@+id/game_layout"
+        app:layout_constraintBottom_toTopOf="@+id/game_layout"/>
+
+
+    <!--Center block-->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/game_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@mipmap/spinner_shape"
+        android:orientation="horizontal"
+        android:padding="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
+        app:layout_constraintDimensionRatio=""
+        app:layout_constraintEnd_toStartOf="@+id/combinations_layout"
+        app:layout_constraintHorizontal_weight="8"
+        app:layout_constraintStart_toEndOf="@+id/jackpot_layout"
+        app:layout_constraintTop_toBottomOf="@+id/logo">
+
+        <com.example.roma.vipslots.MyRecyclerView
+            android:id="@+id/leftColumn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/spinner"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/middleColumn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.example.roma.vipslots.MyRecyclerView>
+
+        <com.example.roma.vipslots.MyRecyclerView
+            android:id="@+id/middleColumn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="10dp"
+            android:background="@mipmap/spinner"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/rightColumn"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/leftColumn"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.example.roma.vipslots.MyRecyclerView>
+
+        <com.example.roma.vipslots.MyRecyclerView
+            android:id="@+id/rightColumn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@mipmap/spinner"
+            android:nestedScrollingEnabled="false"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/middleColumn"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </com.example.roma.vipslots.MyRecyclerView>
+
+        <ImageView
+            android:id="@+id/line1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/spinner_line_goriz"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.15" />
+
+        <ImageView
+            android:id="@+id/line2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/spinner_line_goriz"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/line3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:src="@mipmap/spinner_line_goriz"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.85" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+    <!--Right block-->
+    <LinearLayout
+        android:id="@+id/combinations_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="5"
+        app:layout_constraintStart_toEndOf="@+id/game_layout"
+        app:layout_constraintTop_toBottomOf="@+id/banner_layout">
+
+        <TextView
+            style="@style/TextViewPrimary"
+            android:layout_gravity="center"
+            android:text="@string/label_combinations"
+            android:textSize="20sp" />
+
+        <!--<android.support.v7.widget.RecyclerView
+            android:id="@+id/combinations_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/border"
+            android:layout_margin="5dp"
+            android:padding="5dp" />-->
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:src="@mipmap/board_combinations"/>
+    </LinearLayout>
+
+    <!--Bottom block-->
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!--Button settings-->
+        <ImageView
+            android:id="@+id/image_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/button_blue_small_pressed"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!--My coins block-->
+        <TextView
+            android:id="@+id/field_coins"
+            style="@style/TextViewPrimary"
+            android:layout_marginStart="55dp"
+            android:background="@mipmap/field_coins"
+            android:text="1000"
+            android:fontFamily="@font/roboto_regular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/image_settings"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/TextViewSecond"
+            android:text="@string/label_coins"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/field_coins"
+            app:layout_constraintStart_toStartOf="@+id/field_coins"
+            app:layout_constraintTop_toBottomOf="@+id/field_coins" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginStart="15dp"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/coins_picture"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--Lines block-->
+        <TextView
+            android:id="@+id/field_lines"
+            style="@style/TextViewPrimary"
+            android:layout_width="60dp"
+            android:layout_marginStart="15dp"
+            android:background="@mipmap/field_coins"
+            android:fontFamily="@font/roboto_regular"
+            android:text="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/field_coins"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/TextViewSecond"
+            android:text="@string/label_lines"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/field_lines"
+            app:layout_constraintStart_toStartOf="@+id/field_lines"
+            app:layout_constraintTop_toBottomOf="@+id/field_lines" />
+
+        <!--Change bet block-->
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/small_button_click"
+            android:onClick="eventLowerBid"
+            android:text="@string/action_minus"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/field_lines"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/field_bet"
+            style="@style/TextViewPrimary"
+            android:layout_width="0dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="@mipmap/field_bet"
+            android:text="5"
+            android:fontFamily="@font/roboto_regular"
+            android:maxWidth="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_spin"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/field_lines"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            style="@style/TextViewSecond"
+            android:text="@string/label_bet"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/field_bet"
+            app:layout_constraintStart_toStartOf="@+id/field_bet"
+            app:layout_constraintTop_toBottomOf="@+id/field_bet" />
+
+        <Button
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/small_button_click"
+            android:onClick="eventRaiseBid"
+            android:text="@string/action_plus"
+            android:textSize="22sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/button_spin"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--Button spin-->
+        <Button
+            android:id="@+id/button_spin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/big_button_click"
+            android:onClick="eventSpin"
+            android:text="@string/action_spin"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>
