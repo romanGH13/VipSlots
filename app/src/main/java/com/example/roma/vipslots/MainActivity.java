@@ -1,22 +1,22 @@
 package com.example.roma.vipslots;
 
-import android.content.DialogInterface;
-import android.media.Image;
 import android.support.constraint.ConstraintLayout;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.LinearSmoothScroller;
 import android.support.v7.widget.RecyclerView;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     Map<String, String> combinationsDictionary = null;
 
     private boolean inGame = false;
+
+    private AdView mAdView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +89,19 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
+        mAdView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
+        mAdView.setAdListener(new AdListener() {
+            public void onAdLoaded() {
+                mAdView.setVisibility(View.VISIBLE);
+            }
+            public void onAdFailedToLoad(int errorcode) {}
+            // Only implement methods you need.
+        });
+
+        showWinDialog(200);
     }
 
 
@@ -355,7 +370,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void showSettingsDialog()
     {
-        SettingDialog alert = new SettingDialog();
+        AboutDialog alert = new AboutDialog();
         alert.showDialog(this);
     }
 

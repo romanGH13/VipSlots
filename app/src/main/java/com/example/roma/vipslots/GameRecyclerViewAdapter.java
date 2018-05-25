@@ -14,7 +14,7 @@ import java.util.Map;
 import static com.example.roma.vipslots.MainActivity.gameLayout;
 
 /**
- * Created by Roma on 17.05.2018.
+ * Created by Roman Trehub on 17.05.2018.
  */
 
 public class GameRecyclerViewAdapter extends RecyclerView.Adapter<GameRecyclerViewAdapter.ViewHolder> {

@@ -8,8 +8,8 @@
     android:paddingBottom="5dp"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
-    tools:context="com.example.roma.vipslots.MainActivity">
+    tools:context="com.example.roma.vipslots.MainActivity"
+    xmlns:ads="http://schemas.android.com/apk/res-auto">
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
@@ -17,23 +17,23 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
-        android:visibility="invisible"
         ads:adSize="BANNER"
+        android:visibility="invisible"
         ads:adUnitId="@string/banner_ad_unit_id"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
     </com.google.android.gms.ads.AdView>
 
-
     <!--Left block-->
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/jackpot_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="25dp"
         android:orientation="vertical"
         android:padding="5dp"
+        android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
         app:layout_constraintEnd_toStartOf="@+id/game_layout"
         app:layout_constraintHorizontal_weight="5"
@@ -41,42 +41,55 @@
         app:layout_constraintTop_toBottomOf="@+id/adView">
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/jackpot_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_gravity="center"
-            android:src="@mipmap/text_jackpot" />
+            android:src="@mipmap/text_jackpot"
+            app:layout_constraintDimensionRatio="5:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/field_jackpot"
+            app:layout_constraintVertical_chainStyle="spread"
+            app:layout_constraintVertical_weight="2" />
 
         <TextView
             android:id="@+id/field_jackpot"
             style="@style/TextViewPrimary"
-            android:layout_gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="15dp"
             android:background="@mipmap/field_jackpot"
             android:text="@string/label_jackpot"
             android:textColor="@color/colorGold"
-            android:textSize="20sp" />
+            android:textSize="28sp"
+            app:layout_constraintBottom_toTopOf="@+id/jackpot_combinations_image"
+            app:layout_constraintDimensionRatio="5:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        <!--<android.support.v7.widget.RecyclerView
-            android:id="@+id/jackpot_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="5dp"
-            android:background="@drawable/border"
-            android:padding="10dp" />-->
         <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:id="@+id/jackpot_combinations_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="15dp"
             android:layout_gravity="center"
-            android:src="@mipmap/board_jackpot"/>
-    </LinearLayout>
+            android:src="@mipmap/board_jackpot"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="9:10"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+    </android.support.constraint.ConstraintLayout>
 
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_gravity="center"
+        android:layout_margin="15dp"
         android:src="@mipmap/logo"
+        app:layout_constraintVertical_weight="1"
         app:layout_constraintTop_toBottomOf="@+id/adView"
         app:layout_constraintStart_toStartOf="@+id/game_layout"
         app:layout_constraintEnd_toEndOf="@+id/game_layout"
@@ -90,7 +103,8 @@
         android:layout_height="0dp"
         android:background="@mipmap/spinner_shape"
         android:orientation="horizontal"
-        android:padding="15dp"
+        android:padding="30dp"
+        app:layout_constraintVertical_weight="9"
         app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
         app:layout_constraintDimensionRatio=""
         app:layout_constraintEnd_toStartOf="@+id/combinations_layout"
@@ -101,7 +115,7 @@
         <com.example.roma.vipslots.MyRecyclerView
             android:id="@+id/leftColumn"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@mipmap/spinner"
             android:nestedScrollingEnabled="false"
             android:orientation="vertical"
@@ -186,12 +200,14 @@
 
 
     <!--Right block-->
-    <LinearLayout
+    <android.support.constraint.ConstraintLayout
         android:id="@+id/combinations_layout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
         android:layout_marginTop="5dp"
+
+        android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_weight="5"
@@ -199,31 +215,40 @@
         app:layout_constraintTop_toBottomOf="@+id/adView">
 
         <TextView
+            android:id="@+id/combinations_label"
             style="@style/TextViewPrimary"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_gravity="center"
             android:text="@string/label_combinations"
-            android:textSize="20sp" />
+            android:textSize="28sp"
+            app:layout_constraintDimensionRatio="5:1"
+            app:layout_constraintVertical_weight="2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/combinations_image"/>
 
-        <!--<android.support.v7.widget.RecyclerView
-            android:id="@+id/combinations_recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/border"
-            android:layout_margin="5dp"
-            android:padding="5dp" />-->
         <ImageView
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:src="@mipmap/board_combinations"/>
-    </LinearLayout>
+            android:id="@+id/combinations_image"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="5dp"
+            android:src="@mipmap/board_combinations"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="5:7"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_weight="9" />
+    </android.support.constraint.ConstraintLayout>
 
     <!--Bottom block-->
     <android.support.constraint.ConstraintLayout
         android:id="@+id/bottom_layout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        app:layout_constraintVertical_weight="2"
+        app:layout_constraintTop_toBottomOf="@+id/game_layout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -231,37 +256,50 @@
         <!--Button settings-->
         <ImageView
             android:id="@+id/image_settings"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
             android:background="@mipmap/button_blue_small_pressed"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintEnd_toStartOf="@+id/field_coins"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <!--My coins block-->
         <TextView
             android:id="@+id/field_coins"
             style="@style/TextViewPrimary"
-            android:layout_marginStart="55dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@mipmap/field_coins"
             android:text="1000"
+            android:textSize="24sp"
             android:fontFamily="@font/roboto_regular"
+            app:layout_constraintHorizontal_weight="4"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image_settings"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/field_lines"/>
 
         <TextView
             style="@style/TextViewSecond"
             android:text="@string/label_coins"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/field_coins"
             app:layout_constraintStart_toStartOf="@+id/field_coins"
             app:layout_constraintTop_toBottomOf="@+id/field_coins" />
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:layout_marginStart="15dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="4:1"
+            android:layout_margin="25dp"
             android:scaleType="centerCrop"
             android:src="@mipmap/coins_picture"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -272,18 +310,25 @@
         <TextView
             android:id="@+id/field_lines"
             style="@style/TextViewPrimary"
-            android:layout_width="60dp"
-            android:layout_marginStart="15dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:background="@mipmap/field_coins"
             android:fontFamily="@font/roboto_regular"
             android:text="1"
+            android:textSize="24sp"
+            app:layout_constraintHorizontal_weight="3"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/field_bet"
             app:layout_constraintStart_toEndOf="@+id/field_coins"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             style="@style/TextViewSecond"
             android:text="@string/label_lines"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/field_lines"
             app:layout_constraintStart_toStartOf="@+id/field_lines"
@@ -291,13 +336,16 @@
 
         <!--Change bet block-->
         <Button
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="10dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginStart="40dp"
             android:background="@drawable/small_button_click"
             android:onClick="eventLowerBid"
             android:text="@string/action_minus"
-            android:textSize="22sp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/field_lines"
             app:layout_constraintTop_toTopOf="parent" />
@@ -306,34 +354,42 @@
             android:id="@+id/field_bet"
             style="@style/TextViewPrimary"
             android:layout_width="0dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginStart="25dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="20dp"
             android:background="@mipmap/field_bet"
             android:fontFamily="@font/roboto_regular"
             android:maxWidth="50dp"
             android:text="5"
+            android:textSize="24sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_spin"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_weight="4"
             app:layout_constraintStart_toEndOf="@+id/field_lines"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             style="@style/TextViewSecond"
             android:text="@string/label_bet"
+            android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/field_bet"
             app:layout_constraintStart_toStartOf="@+id/field_bet"
             app:layout_constraintTop_toBottomOf="@+id/field_bet" />
 
         <Button
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="10dp"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginEnd="40dp"
             android:background="@drawable/small_button_click"
             android:onClick="eventRaiseBid"
             android:text="@string/action_plus"
-            android:textSize="22sp"
+            android:textSize="30sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/button_spin"
             app:layout_constraintTop_toTopOf="parent" />
@@ -341,15 +397,20 @@
         <!--Button spin-->
         <Button
             android:id="@+id/button_spin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginStart="20dp"
             android:background="@drawable/big_button_click"
             android:onClick="eventSpin"
             android:text="@string/action_spin"
-            android:textSize="22sp"
+            android:textSize="30sp"
             android:textStyle="bold"
+            app:layout_constraintHorizontal_weight="6"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/field_bet"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 

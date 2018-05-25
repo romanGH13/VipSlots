@@ -1,4 +1,5 @@
 <resources>
+    <string name="author">Roman Trehub</string>
     <string name="app_name">Vip Slots</string>
 
     <string name="action_spin">Spin!</string>
@@ -15,6 +16,17 @@
 
     <string name="label_first_line">First line</string>
     <string name="label_second_line">Second line</string>
+    <string name="win_label_coins">coins</string>
     <string name="label_third_line">Third line</string>
+
+    <string name="label_about_version">Version 1.0</string>
+    <string name="label_about_development">development by </string>
+    <string name="label_about_url">
+        <u>Natife.com</u>
+    </string>
+
+    <string name="natife_url">https://natife.com/</string>
+
+    <string name="banner_ad_unit_id">ca-app-pub-6629087046457001/6972106883</string>
 
 </resources>
