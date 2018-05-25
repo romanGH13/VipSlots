@@ -101,7 +101,6 @@ public class MainActivity extends AppCompatActivity {
             // Only implement methods you need.
         });
 
-        showWinDialog(200);
     }
 
 
